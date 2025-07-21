@@ -1,169 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>20 Day Planner With Notes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <title>20 Days Planner</title>
   <style>
     body {
-      background-color: #f5f5f5;
-      font-family: Segoe UI, sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
     }
-    .container {
-      max-width: 960px;
+    .planner-container {
+      max-width: 700px;
       margin: 30px auto;
       background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      padding: 36px 24px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px 2px rgba(0,0,0,0.1);
     }
-    td.clickable {
-      cursor: pointer;
+    .day-section {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 24px;
+      margin-bottom: 32px;
     }
-    td.clicked {
-      background-color: #92d050 !important;
-      font-weight: bold;
-      color: #000;
+    .day-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
     }
-    td.frozen {
-      background-color: #eee;
-      pointer-events: none;
+    .notes-textarea {
+      width: 100%;
+      min-height: 80px;
+      margin-top: 8px;
+      resize: vertical;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #bdbdbd;
+      font-size: 1em;
     }
-    .btn-group {
-      margin: 15px 0;
+    .word-count-note {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 16px;
+      margin-top: 4px;
+    }
+    h1 {
       text-align: center;
     }
-    .comment-area {
-      margin-top: 20px;
-    }
-    .comment-area textarea {
-      width: 100%;
-      height: 120px;
-      resize: vertical;
-      padding: 10px;
-      border: 1px solid #ccc;
-      font-size: 14px;
+    h2 {
+      color: #1976d2;
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <h3 class="text-center">Section B</h3>
-  <div class="table-responsive">
-    <table class="table table-bordered text-center">
-      <thead>
-        <tr>
-          <th class="frozen">Subject</th>
-          <!-- Days 1–20 -->
-          <script>
-            for(let i=1; i<=20; i++){
-              document.write(`<th class="frozen">Day ${i}</th>`);
-            }
-          </script>
-        </tr>
-      </thead>
-      <tbody>
-        <script>
-          const subjectsB = ["HISTORY", "GEOGRAPHY", "SCIENCE", "POLITY", "ECONOMICS"];
-          for(let r=0; r<subjectsB.length; r++){
-            document.write(`<tr><td class="frozen">${subjectsB[r]}</td>`);
-            for(let c=1; c<=20; c++){
-              const cid = `b-${r}-${c}`;
-              document.write(`<td id="${cid}" class="clickable" onclick="toggleGreen(this)"></td>`);
-            }
-            document.write(`</tr>`);
-          }
-        </script>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Comment Box for Section B -->
-  <div class="comment-area">
-    <h5>Daily Notes (Section B)</h5>
-    <textarea id="comment-b" maxlength="2500" placeholder="Write your comment here..."></textarea>
-    <div class="text-end mt-2">
-      <button class="btn btn-outline-primary btn-sm" onclick="saveComment('b')">💾 Save Note</button>
+  <div class="planner-container">
+    <h1>20 Days Planner</h1>
+    <!-- Example 3 days, duplicate for 20 -->
+    <div class="day-section">
+      <h2>Day 1</h2>
+      <p>Focus: Getting Started!<br>Tasks: Review syllabus, gather resources, set daily targets.</p>
     </div>
-  </div>
-</div>
-
-<div class="container">
-  <h3 class="text-center">Section M</h3>
-  <div class="table-responsive">
-    <table class="table table-bordered text-center">
-      <thead>
-        <tr>
-          <th class="frozen">Subject</th>
-          <!-- Days 1–20 -->
-          <script>
-            for(let i=1; i<=20; i++){
-              document.write(`<th class="frozen">Day ${i}</th>`);
-            }
-          </script>
-        </tr>
-      </thead>
-      <tbody>
-        <script>
-          const subjectsM = ["BIHAR SPECIAL", "CURRENT AFFAIRS", "PYQ", "KGS", "OTHERS"];
-          for(let r=0; r<subjectsM.length; r++){
-            document.write(`<tr><td class="frozen">${subjectsM[r]}</td>`);
-            for(let c=1; c<=20; c++){
-              const cid = `m-${r}-${c}`;
-              document.write(`<td id="${cid}" class="clickable" onclick="toggleGreen(this)"></td>`);
-            }
-            document.write(`</tr>`);
-          }
-        </script>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Comment Box for Section M -->
-  <div class="comment-area">
-    <h5>Daily Notes (Section M)</h5>
-    <textarea id="comment-m" maxlength="2500" placeholder="Write your comment here..."></textarea>
-    <div class="text-end mt-2">
-      <button class="btn btn-outline-primary btn-sm" onclick="saveComment('m')">💾 Save Note</button>
+    <div class="day-section">
+      <h2>Day 2</h2>
+      <p>Focus: Foundation Building<br>Tasks: Read key topics, attempt initial quizzes, take basic notes.</p>
     </div>
+    <div class="day-section">
+      <h2>Day 3</h2>
+      <p>Focus: Practice!<br>Tasks: Solve 20 practice questions, analyze mistakes, summarize learnings.</p>
+    </div>
+    <!-- ...repeat up to Day 20 -->
   </div>
-</div>
-
-<!-- Scripts -->
-<script>
-  // Toggle cell color and save state
-  function toggleGreen(cell) {
-    const id = cell.id;
-    cell.classList.toggle('clicked');
-    const progress = JSON.parse(localStorage.getItem('planner-progress') || '{}');
-    progress[id] = cell.classList.contains('clicked');
-    localStorage.setItem('planner-progress', JSON.stringify(progress));
-  }
-
-  // On load: restore all clickable cell states
-  window.onload = function() {
-    const progress = JSON.parse(localStorage.getItem('planner-progress') || '{}');
-    for (const id in progress) {
-      const cell = document.getElementById(id);
-      if (cell && progress[id]) {
-        cell.classList.add('clicked');
+  
+  <script>
+    function checkWordCount(textarea) {
+      const wordLimit = 500;
+      const words = textarea.value.trim().split(/\s+/).filter(Boolean);
+      const noteDiv = textarea.nextElementSibling;
+      noteDiv.textContent = `Word count: ${words.length}/${wordLimit}`;
+      if (words.length > wordLimit) {
+        textarea.value = words.slice(0, wordLimit).join(" ");
+        noteDiv.textContent = `Word count: ${wordLimit}/${wordLimit} (Limit reached)`;
       }
     }
 
-    // Restore comments
-    document.getElementById('comment-b').value = localStorage.getItem('comment-b') || '';
-    document.getElementById('comment-m').value = localStorage.getItem('comment-m') || '';
-  };
+    document.querySelectorAll('.day-section').forEach(section => {
+      // Create textarea
+      const textarea = document.createElement('textarea');
+      textarea.className = 'notes-textarea';
+      textarea.maxLength = 3000;
+      textarea.placeholder = 'Write your notes here (limit: 500 words)';
+      textarea.oninput = function() { checkWordCount(textarea); };
 
-  // Save comment by section
-  function saveComment(section) {
-    const textarea = document.getElementById('comment-' + section);
-    localStorage.setItem('comment-' + section, textarea.value);
-    alert("✅ Notes saved for Section " + section.toUpperCase());
-  }
-</script>
+      // Create word count div
+      const noteDiv = document.createElement('div');
+      noteDiv.className = 'word-count-note';
 
+      // Insert into section
+      section.appendChild(textarea);
+      section.appendChild(noteDiv);
+    });
+  </script>
 </body>
 </html>
